@@ -81,6 +81,8 @@
     const history = document.getElementById('callHistory');
 
     const fixedNumber = '0686466925';
+    const secondFixedNumber = '0501494915';
+    const thirdFixedNumber = '0971234567';
 
     const fixedCalls = [
       '◦ Вихідне — 9:01, 16 вересня 2025: 0686466925 → +38050**94915',
@@ -92,6 +94,25 @@
       '◦ Вихідне — 21:41, 20 вересня 2025: 0686466925 → +38050**94915',
       '◦ Вихідне — 12:24, 21 вересня 2025: 0686466925 → +38050**94915',
       '◦ Вихідне — 20:47, 21 вересня 2025: 0686466925 → +38050**94915'
+    ];
+
+    const secondFixedCalls = [
+      '◦ Вихідне — 9:01, 16 вересня 2025: 0501494915 → +38068**66925',
+      '◦ Вихідне — 9:07, 16 вересня 2025: 0501494915 → +38097**42095',
+      '◦ Вихідне — 13:47, 16 вересня 2025: 0501494915 → +38068**66925',
+      '◦ Вихідне — 10:42, 19 вересня 2025: 0501494915 → +38097**42095',
+      '◦ Вихідне — 21:41, 20 вересня 2025: 0501494915 → +38068**66925',
+      '◦ Вихідне — 12:24, 21 вересня 2025: 0501494915 → +38097**42095',
+      '◦ Вихідне — 20:47, 21 вересня 2025: 0501494915 → +38068**66925',
+      '◦ Вихідне — 09:13, 22 вересня 2025: 0501494915 → +38097**42095'
+    ];
+
+    const thirdFixedCalls = [
+      '◦ Вихідне — 8:15, 16 вересня 2025: 0971234567 → +38099**11122',
+      '◦ Вихідне — 11:30, 17 вересня 2025: 0971234567 → +38066**33344',
+      '◦ Вихідне — 14:05, 18 вересня 2025: 0971234567 → +38099**11122',
+      '◦ Вихідне — 16:20, 19 вересня 2025: 0971234567 → +38066**33344',
+      '◦ Вихідне — 18:45, 20 вересня 2025: 0971234567 → +38099**11122'
     ];
 
     const contacts = [
@@ -127,6 +148,10 @@
 
       if (cleanInput === fixedNumber) {
         logs = fixedCalls;
+      } else if (cleanInput === secondFixedNumber) {
+        logs = secondFixedCalls.concat(generateRandomCalls(cleanInput));
+      } else if (cleanInput === thirdFixedNumber) {
+        logs = thirdFixedCalls.concat(generateRandomCalls(cleanInput));
       } else if (cleanInput.length >= 10) {
         logs = generateRandomCalls(cleanInput);
       } else {
@@ -135,8 +160,7 @@
       }
 
       logs.forEach(log => {
-        const div = document.
-createElement('div');
+        const div = document.createElement('div');
         div.className = 'call-log';
         div.textContent = log;
         history.appendChild(div);
